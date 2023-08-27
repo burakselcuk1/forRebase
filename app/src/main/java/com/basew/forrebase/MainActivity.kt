@@ -8,7 +8,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // İlk versiyon kodu
-        println("Selam Android!")
+        helloWorld()
+        setupUI()
+    }
+
+    private fun helloWorld() {
+        println("Hello, World!")
+    }
+
+    private fun setupUI() {
+        println("UI is set up.")
     }
 }
