@@ -9,6 +9,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // İlk versiyon kodu
-        println("Merhaba, Dünya!")
+        println("Selam Android!")
     }
 }
