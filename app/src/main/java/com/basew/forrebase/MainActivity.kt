@@ -39,9 +39,8 @@ class ConverterFragment : Fragment() {
             viewModel.changeFromExchangeRate(parent.getItemAtPosition(position) as String)
         }
 
-        binding.autoCompleteTo.setOnItemClickListener { parent, view, position, id ->
-            viewModel.changeToExchangeRate(parent.getItemAtPosition(position) as String)
-        }
+        viewModel.fetchExchangeRates()
+        this.setupObservers()
 
         viewModel.fetchExchangeRates()
         this.setupObservers()
