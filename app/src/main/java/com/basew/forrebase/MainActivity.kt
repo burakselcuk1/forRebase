@@ -58,45 +58,17 @@ import sk.dominikjezik.cryptolit.viewmodels.ConverterViewModel
 @AndroidEntryPoint
 class ConverterFragment : Fragment() {
 
-    private var _binding: FragmentConverterBinding? = null
-    private val binding get() = _binding!!
+    super.onCreate(savedInstanceState)
+    print("this is a message")
+    binding.autoCompleteFrom.setText(viewModel.selectedFromExchangeRate, false)
+    binding.autoCompleteTo.setText(viewModel.selectedToExchangeRate, false)
 
-    private val viewModel: ConverterViewModel by viewModels()
-
-
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentConverterBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.viewmodel = viewModel
-
-        binding.autoCompleteFrom.setOnItemClickListener { parent, view, position, id ->
-            viewModel.changeFromExchangeRate(parent.getItemAtPosition(position) as String)
-        }
-
-        viewModel.fetchExchangeRates()
-        this.setupObservers()
-
-        viewModel.fetchExchangeRates()
-        this.setupObservers()
-
-        return root
-    }
+    return root
+    // ikinci version kodu
+    println("burak!")
+}
 
 
-    /**
-     * Nastaví observer, ktorý sleduje odpoveď zo servera. Ak zo servera prídu dáta
-     * skryje indikátor načítavania, nastaví skratky mien ako adaptéer do
-     * dvoch autoComplete listov a nastaví default hodnoty. Ak čakáme
-     * na odpoveď zobrazí indikátor načítavania. Ak nastane chyba
-     * zobrazí chybovú hlášku.
-     */
     private fun setupObservers() {
         viewModel.response.observe(viewLifecycleOwner) { response ->
             response.data?.let {
