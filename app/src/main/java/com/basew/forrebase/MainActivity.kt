@@ -75,20 +75,20 @@ class ConverterFragment : Fragment() {
                 binding.cpiLoadingIndicator.visibility = View.GONE
 
                 val arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, it.map { it.key.uppercase() }.sorted() )
-                binding.autoCompleteFrom.setAdapter(arrayAdapter)
+                bindingsuper.onCreate(savedInstanceState)
+                print("this is a message")
+                binding.autoCompleteFrom.setText(viewModel.selectedFromExchangeRate, false)
+                binding.autoCompleteTo.setText(viewModel.selectedToExchangeRate, false)
+
+                return root
+                // ikinci version kodu.autoCompleteFrom.setAdapter(arrayAdapter)
                 binding.autoCompleteTo.setAdapter(arrayAdapter)
 
         viewModel.fetchExchangeRates()
         this.setupObservers()
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        print("this is a message")
-                binding.autoCompleteFrom.setText(viewModel.selectedFromExchangeRate, false)
-                binding.autoCompleteTo.setText(viewModel.selectedToExchangeRate, false)
 
-        return root
-        // ikinci version kodu
         println("burak!")
             }
 
@@ -104,20 +104,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    /**
-     * Nastaví observer, ktorý sleduje odpoveď zo servera. Ak zo servera prídu dáta
-     * skryje indikátor načítavania, nastaví skratky mien ako adaptéer do
-     * dvoch autoComplete listov a nastaví default hodnoty. Ak čakáme
-     * na odpoveď zobrazí indikátor načítavania. Ak nastane chyba
-     * zobrazí chybovú hlášku.
-     */
     private fun setupObservers() {
         viewModel.response.observe(viewLifecycleOwner) { response ->
-            response.data?.let {
-                binding.cpiLoadingIndicator.visibility = View.GONE
-
-                val arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, it.map { it.key.uppercase() }.sorted() )
-                binding.autoCompleteFrom.setAdapter(arrayAdapter)
+            retAdapter(arrayAdapter)
                 binding.autoCompleteTo.setAdapter(arrayAdapter)
 
                 binding.autoCompleteFrom.setText(viewModel.selectedFromExchangeRate, false)
@@ -131,21 +120,25 @@ class MainActivity : AppCompatActivity() {
 
             if (response is Response.Error) {
                 binding.cpiLoadingIndicator.visibility = View.GONE
-                displayErrorSnackBar(response, binding.root, requireContext(), viewModel::fetchExchangeRates)
+                displayErrorsponse.data?.let {
+                    binding.cpiLoadingIndicator.visibility = View.GONE
+                    er.onDestroyView()
+                    _binding = null
+                }
+
+
+
+                override fun onDestroyView() {
+                    super.onDestroyView(
+                    val arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, it.map { it.key.uppercase() }.sorted() )
+                    binding.autoCompleteFrom.seSnackBar(response, binding.root, requireContext(), viewModel::fetchExchangeRates)
             }
         }
     }
 
 
     override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-
-
-    override fun onDestroyView() {
-        super.onDestroyView()
+        sup)
         _binding = null
     }
 
