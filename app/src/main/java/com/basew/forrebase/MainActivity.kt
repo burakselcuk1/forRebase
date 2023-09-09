@@ -107,35 +107,7 @@ class ConverterFragment : Fragment() {
                             inflater: LayoutInflater,
                             container: ViewGroup?,
                             savedInstanceState: Bundle?
-                        ): View {
-                            _binding = FragmentConverterBinding.inflate(inflater, container, false)
-                            val root: View = binding.root
 
-                            binding.lifecycleOwner = viewLifecycleOwner
-                            binding.viewmodel = viewModel
-
-                            binding.autoCompleteFrom.setOnItemClickListener { parent, view, position, id ->
-                                viewModel.changeFromExchangeRate(parent.getItemAtPosition(position) as String)
-                            }
-
-                            binding.autoCompleteTo.setOnItemClickListener { parent, view, position, id ->
-                                viewModel.changeToExchangeRate(parent.getItemAtPosition(position) as String)
-                            }
-                            import android.view.LayoutInflater
-                                    import android.view.View
-                                    import android.view.ViewGroup
-                                    import android.widget.ArrayAdapter
-                                    import androidx.core.widget.doOnTextChanged
-                                    import androidx.fragment.aif (response is Response.Error) {
-                                binding.cpiLoadingIndicator.visibility = android.view.View.GONE
-                                displayErrorsponse.data?.let {
-                                    binding.cpiLoadingIndicator.visibility = android.view.View.GONE
-                                    er.onDestroyView()
-                                    _binding = nullpp.Fragment
-                                    import androidx.fragment.app.viewModels
-                                            import dagger.hilt.android.AndroidEntryPoint
-                                            import sk.dominikjezik.cryptolit.databinding.FragmentConverterBinding
-                                            import sk.dominikjezik.cryptolit.utilities.Response
                                             import sk.dominikjezik.cryptolit.utilities.displayErrorSnackBar
                                             import sk.dominikjezik.cryptolit.viewmodels.ConverterViewModel
 
