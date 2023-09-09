@@ -89,3 +89,9 @@ class ConverterFragment : Fragment() {
                                     val arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, it.map { it.key.uppercase() }.sorted() )
                                     bindingsuper.onCreate(savedInstanceState)
                                     print("this is a message")
+                                    def say_hello():
+                                    print("Hello, world!")
+                                    print("Branch 1 was here.")
+
+                                    if __name__ == "__main__":
+                                    say_hello()
