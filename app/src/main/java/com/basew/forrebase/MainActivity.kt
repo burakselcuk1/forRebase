@@ -65,9 +65,15 @@ class ConverterFragment : Fragment() {
                 binding.autoCompleteFrom.setAdapter(arrayAdapter)
                 binding.autoCompleteTo.setAdapter(arrayAdapter)
 
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        print("this is a message")
                 binding.autoCompleteFrom.setText(viewModel.selectedFromExchangeRate, false)
                 binding.autoCompleteTo.setText(viewModel.selectedToExchangeRate, false)
 
+        // ikinci version kodu
+        println("burak!")
             }
 
             if (response is Response.Waiting) {
